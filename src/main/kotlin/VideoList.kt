@@ -4,21 +4,20 @@ import react.dom.*
 import react.dom.html.ReactHTML.p
 
 
-external interface VideoListProps : Props {
+external interface VideoListProps : Props {  //Configured to received selectedVideo as prop
     var videos: List<Video>
-}
+    var selectedVideo: Video?
+    var onSelectVideo: (Video) -> Unit  //Passing handler to lift state
+ }
 
 val VideoList = FC<VideoListProps> {props ->
-    var selectedVideo:  Video? by useState(null)
-
     for (video in props.videos){
-
         p {
             key = video.id.toString()
             onClick = {
-                selectedVideo = video
+                props.onSelectVideo(video)
             }
-            if (video == selectedVideo) {
+            if (video == props.selectedVideo) {   //Using prop instead of state
                 +"▶ "
             }
             +"${video.speaker}: ${video.title}"
