@@ -11,6 +11,7 @@ external interface VideoPlayerProps : Props {
     var onWatchedButtonPressed: (Video) -> Unit
     var unwatchedVideo: Boolean
 }
+
 // Assuring the video player has access to title, author, and link, it's accessible in each Video object.
 val VideoPlayer = FC<VideoPlayerProps> { props ->
     div {
@@ -35,13 +36,35 @@ val VideoPlayer = FC<VideoPlayerProps> { props ->
                 props.onWatchedButtonPressed(props.video)
             }
             if (props.unwatchedVideo) {
-                + "Mark as watched"
+                +"Mark as watched"
             } else {
-            + "Mark as unwatched"
+                +"Mark as unwatched"
             }
         }
-        img {
-            src = "https://via.placeholder.com/640x360.png?text=Video+Player+Placeholder"
+        div {
+            css {
+                position = Position.absolute
+                top = 10.px
+                right = 10.px
+            }
+            EmailShareButton {
+                url = props.video.videoUrl
+                EmailIcon {
+                    size = 32
+                    round = true
+                }
+            }
+            TelegramShareButton {
+                url = props.video.videoUrl
+                TelegramIcon {
+                    size = 32
+                    round = true
+                }
+            }
+        }
+        ReactPlayer {
+            url = props.video.videoUrl
+            controls = true
         }
     }
 
