@@ -30,15 +30,21 @@ dependencies {
     //Kotlin React Emotion (CSS) (chapter 3)
     implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion")
 
+
     //Video Player (chapter 7)
     implementation(npm("react-player", "2.10.1"))
 
+    // Audio Player
+    implementation(npm("react-h5-audio-player", "3.8.5"))
+
     //Share Buttons (chapter 7)
     implementation(npm("react-share", "4.4.0"))
+    implementation(npm("react-h5-audio-player", "3.8.5"))
 
     //Coroutines & serialization (chapter 8)
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
+
 }
 
 // Heroku Deployment (chapter 9)
