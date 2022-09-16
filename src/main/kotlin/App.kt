@@ -8,13 +8,39 @@ import kotlinx.serialization.json.Json
 import emotion.react.css
 import csstype.Position
 import csstype.px
-import kotlinx.browser.document
-import kotlinx.coroutines.MainScope
 import react.dom.html.ReactHTML.h1
 import react.dom.html.ReactHTML.h3
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.p
 import react.dom.html.ReactHTML.img
+
+
+
+
+
+
+
+//val mUserAuthorization = SpotifyUserAuthorization(
+//    authorizationCode = code
+//)
+//
+//val pkceBuilder = spotifyClientPkceApi(
+//    clientId = SpotifyService.CLIENT_ID,
+//    redirectUri = SpotifyService.REDIRECT_URI,
+//    authorization = mUserAuthorization
+//)
+
+
+
+
+//
+//val token: Token = "ABC"
+//val api = spotifyImplicitGrantApi(
+//    null,
+//    null,
+//    token
+//) // create api. there is no need to build it
+////println(api.personalization.getTopArtists(limit = 1)[0].name) // use it
 
 suspend fun fetchVideo(id: Int): Video {
     val response = window
@@ -49,9 +75,6 @@ val App = FC<Props> {
         }
     }
 
-
-    document.bgColor = "honeydew"  //Changing background color. Works in either App or Main
-
     h1 {
         +"Hello, React+Kotlin/JS!"
     }
@@ -77,13 +100,6 @@ val App = FC<Props> {
             }
         }
     }
-
-    /*
-    The VideoPlayerProps interface specifies that the VideoPlayer comp takes a non-null video,
-    we make sure to handle this within the App.
-    The let scope func ensures that the VideoPlayer comp is only added when state.currentVideo isn't null.
-    Clicking an entry brings up the video player and populates it.
-    */
     currentVideo?.let { curr ->
         VideoPlayer {
             video = curr
@@ -101,6 +117,15 @@ val App = FC<Props> {
     }
 }
 
+/*
+document.bgColor = "honeydew"  //Changing background color. Works in either App or Main
+
+The VideoPlayerProps interface specifies that the VideoPlayer comp takes a non-null video,
+we make sure to handle this within the App.
+The let scope func ensures that the VideoPlayer comp is only added when state.currentVideo isn't null.
+Clicking an entry brings up the video player and populates it.
+
+
 
 //    var currentVideo: Video? by useState(null)
 //    var unwatchedVideos: List<Video> by useState(listOf(
@@ -111,3 +136,6 @@ val App = FC<Props> {
 //    var watchedVideos: List<Video> by useState(listOf(
 //        Video(4, "Creating Internal DSLs in Kotlin", "Venkat Subramaniam", "https://youtu.be/JzTeAM8N1-o")
 //    ))
+
+
+ */
